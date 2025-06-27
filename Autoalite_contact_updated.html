@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoElite | Premium Car Dealership</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+ /* Base Styles with New Color Theme */
+:root {
+  --primary: #0a0a1a;       /* Deep black-blue */
+  --secondary: #1e0b36;     /* Rich purple */
+  --accent: #e63946;        /* Vibrant red */
+  --accent-light: #4cc9f0;  /* Bright blue */
+  --light: #f8f9fa;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--light);
+  color: var(--primary);
+  overflow-x: hidden;
+}
+
+/* Pulse Animation for Attention-Grabbing Elements */
+@keyframes pulse {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(78, 201, 240, 0.7); }
+  70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(78, 201, 240, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(78, 201, 240, 0); }
+}
+
+/* Floating Animation for Hero Elements */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Gradient Shift for Backgrounds */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Hero Section with Animated Gradient */
+.hero-section {
+  background: linear-gradient(135deg, rgba(10, 10, 26, 0.9), rgba(30, 11, 54, 0.9)),
+              url('https://images.unsplash.com/photo-1583121274602-3e2820c69888');
+  background-size: cover, cover;
+  background-position: center, center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+  animation: gradientShift 15s ease infinite;
+  background-size: 200% 200%;
+}
+
+/* Animated Call-to-Action Buttons */
+.btn-primary {
+  background-color: var(--accent);
+  color: white;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.btn-primary:hover {
+  background-color: #c1121f;
+  transform: translateY(-3px) rotateX(15deg);
+  box-shadow: 0 15px 30px rgba(230, 57, 70, 0.4),
+              0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:active {
+  transform: translateY(1px);
+}
+
+/* Animated Car Cards */
+.car-card {
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  transform: perspective(1000px) rotateY(0deg);
+}
+
+.car-card:hover {
+  transform: translateY(-10px) perspective(1000px) rotateY(5deg);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.2),
+              0 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+.car-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(78, 201, 240, 0.1), rgba(230, 57, 70, 0.1));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.car-card:hover::after {
+  opacity: 1;
+}
+
+/* Animated Feature Icons */
+.feature-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-light), var(--secondary));
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  margin-bottom: 20px;
+  transition: all 0.4s ease;
+  animation: pulse 2s infinite;
+}
+
+.feature-icon:hover {
+  animation: none;
+  transform: rotateY(180deg) scale(1.1);
+  box-shadow: 0 10px 20px rgba(78, 201, 240, 0.3);
+}
+
+/* Animated Stats Section */
+.stats-number {
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--accent-light);
+  position: relative;
+  display: inline-block;
+}
+
+.stats-number::after {
+  content: '+';
+  position: absolute;
+  right: -15px;
+  top: 0;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.stats-number:hover::after {
+  opacity: 1;
+  right: -25px;
+}
+
+/* Floating Animation for Hero Elements */
+.hero-content h1 {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Animated Navigation Links */
+.nav-link {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-link::before {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent-light);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--accent-light);
+}
+
+.nav-link:hover::before {
+  width: 100%;
+}
+
+/* Animated Loading Bar */
+.scroll-indicator {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent-light), var(--accent));
+  z-index: 1000;
+  transition: width 0.1s linear;
+}
+
+/* Animated Service Cards */
+.service-card {
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(78, 201, 240, 0.1), transparent);
+  transition: 0.5s;
+  z-index: -1;
+}
+
+.service-card:hover::before {
+  left: 100%;
+}
+
+/* Animated Testimonials */
+.testimonial-card {
+  transition: all 0.4s ease;
+  transform-style: preserve-3d;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-10px) rotateX(5deg);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Animated Back to Top Button */
+.back-to-top {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.back-to-top:hover {
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 10px 20px rgba(78, 201, 240, 0.3);
+}
+
+/* Animated Form Inputs */
+.contact-form input,
+.contact-form textarea {
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--accent-light);
+  box-shadow: 0 0 0 3px rgba(78, 201, 240, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Animated Brand Logos */
+.brand-logo {
+  transition: all 0.5s ease;
+  filter: grayscale(100%) brightness(0.8);
+}
+
+.brand-logo:hover {
+  filter: grayscale(0%) brightness(1);
+  transform: scale(1.1) rotateZ(-5deg);
+}
+
+/* Special Animation for Featured Vehicles */
+.featured-badge {
+  animation: pulse 1.5s infinite;
+  background: linear-gradient(135deg, var(--accent), var(--secondary));
+}
+
+/* Animated Price Tags */
+.price-badge {
+  transition: all 0.3s ease;
+  transform-origin: left center;
+}
+
+.car-card:hover .price-badge {
+  transform: scale(1.1) translateX(10px);
+  background: linear-gradient(135deg, var(--accent), var(--secondary));
+}
+
+/* Animated Section Headings */
+.section-heading {
+  position: relative;
+  display: inline-block;
+}
+
+.section-heading::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: var(--accent);
+  transition: all 0.4s ease;
+}
+
+.section-heading:hover::after {
+  width: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-light));
+}
+    
+/* === FIXED STYLES ADDED === */
+.testimonial-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+.testimonial-rating {
+  color: #fbbf24;
+  margin-bottom: 1rem;
+}
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.testimonial-author img {
+  width: 50px;
+  height: 50px;
+  border-radius: 9999px;
+}
+.contact-info-card {
+  background: #1e0b36;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  text-align: center;
+  color: white;
+}
+.contact-info-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--accent-light);
+}
+.newsletter-input {
+  padding: 1rem;
+  border-radius: 9999px 0 0 9999px;
+  border: none;
+  width: 70%;
+  font-size: 1rem;
+}
+.newsletter-btn {
+  background: var(--accent);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 0 9999px 9999px 0;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+.newsletter-btn:hover {
+  background: #c1121f;
+}
+.animate-fade-in {
+  opacity: 0;
+  animation: fadeIn 1s ease forwards;
+}
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+.delay-1 { animation-delay: 0.3s; }
+.delay-2 { animation-delay: 0.6s; }
+.delay-3 { animation-delay: 0.9s; }
+.delay-4 { animation-delay: 1.2s; }
+.price-badge {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  background: var(--accent);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: bold;
+}
+.modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+.modal-content {
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+}
+.modal-img {
+  width: 100%;
+  border-radius: 0.5rem;
+}
+.modal-close {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  background: white;
+  color: black;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--accent-light);
+  color: white;
+  padding: 1rem;
+  border-radius: 50%;
+  display: none;
+  z-index: 1000;
+}
+.back-to-top.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* === END FIXED STYLES === */
+</style>
+</head>
+<body>
+    <!-- Scroll indicator -->
+    <div class="scroll-indicator w-0"></div>
+    
+    <!-- Back to top button -->
+    <div class="back-to-top" id="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+    
+    <!-- Hero Section -->
+    <header class="hero-section px-4 sm:px-8 relative" id="home">
+        <!-- Navigation -->
+        <nav class="absolute top-0 left-0 w-full py-6 px-4 sm:px-8 z-50">
+            <div class="container mx-auto flex justify-between items-center">
+                <div class="text-3xl font-bold text-white">
+                    <span class="text-accent">Auto</span>Elite
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-white font-medium">Home</a>
+                    <a href="#inventory" class="nav-link text-white font-medium">Inventory</a>
+                    <a href="#about" class="nav-link text-white font-medium">About</a>
+                    <a href="#services" class="nav-link text-white font-medium">Services</a>
+                    <a href="#testimonials" class="nav-link text-white font-medium">Testimonials</a>
+                    <a href="#contact" class="nav-link text-white font-medium">Contact</a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="#" class="text-white hover:text-accent transition"><i class="fas fa-phone-alt mr-2"></i> (123) 456-7890</a>
+                    <a href="#contact" class="btn-primary px-6 py-2 rounded-full font-semibold">Schedule Visit</a>
+                </div>
+                
+                <button class="md:hidden text-white text-2xl" id="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div class="md:hidden mobile-menu container mx-auto bg-white rounded-lg mt-2 shadow-lg" id="mobile-menu">
+                <div class="flex flex-col p-4 space-y-3">
+                    <a href="#home" class="text-primary font-medium">Home</a>
+                    <a href="#inventory" class="text-primary font-medium">Inventory</a>
+                    <a href="#about" class="text-primary font-medium">About</a>
+                    <a href="#services" class="text-primary font-medium">Services</a>
+                    <a href="#testimonials" class="text-primary font-medium">Testimonials</a>
+                    <a href="#contact" class="text-primary font-medium">Contact</a>
+                    <div class="pt-2 border-t border-gray-200">
+                        <a href="#" class="text-primary"><i class="fas fa-phone-alt mr-2"></i> (123) 456-7890</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="container mx-auto text-center animate-fade-in">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">Find Your Dream Car</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">At AutoElite, we connect you with premium vehicles that match your lifestyle and ambitions.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#inventory" class="btn-primary px-8 py-3 rounded-full font-bold text-lg inline-block">Browse Inventory</a>
+                <a href="#contact" class="bg-transparent border-2 border-white text-white px-8 py-3 rounded-full font-bold text-lg inline-block hover:bg-white hover:text-primary transition">Contact Us</a>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#inventory" class="text-white text-4xl">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- Stats Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="animate-fade-in delay-1">
+                    <div class="stats-number">1,254+</div>
+                    <div class="stats-label">Vehicles Sold</div>
+                </div>
+                <div class="animate-fade-in delay-2">
+                    <div class="stats-number">15+</div>
+                    <div class="stats-label">Years Experience</div>
+                </div>
+                <div class="animate-fade-in delay-3">
+                    <div class="stats-number">98%</div>
+                    <div class="stats-label">Customer Satisfaction</div>
+                </div>
+                <div class="animate-fade-in delay-4">
+                    <div class="stats-number">50+</div>
+                    <div class="stats-label">Brands Available</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Inventory -->
+    <section class="py-20 bg-gray-50" id="inventory">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Featured Inventory</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Discover our hand-picked selection of premium vehicles, each inspected and certified to meet our exacting standards.</p>
+            </div>
+            
+            <!-- Search Filter -->
+            <div class="search-filter mb-12">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div>
+                        <label class="block text-gray-700 mb-2">Make</label>
+                        <select class="w-full p-3 border border-gray-300 rounded-lg">
+                            <option>All Makes</option>
+                            <option>Audi</option>
+                            <option>BMW</option>
+                            <option>Mercedes</option>
+                            <option>Porsche</option>
+                            <option>Range Rover</option>
+                            <option>Lexus</option>
+                            <option>Tesla</option>
+                            <option>Jaguar</option>
+                            <option>Land Rover</option>
+                            <option>Maserati</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 mb-2">Model</label>
+                            <select class="w-full p-3 border border-gray-300 rounded-lg">
+                            <option>All Models</option>
+                            <option>911</option>
+                            <option>RS7</option>
+                            <option>G-Class</option>
+                            <option>X5</option>
+                            <option>Sport</option>
+                            <option>Model S</option>
+                            <option>E-Class</option>
+                            <option>F-Type</option>
+                            <option>Cayenne</option>
+                            <option>Defender</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 mb-2">Price Range</label>
+                        <select class="w-full p-3 border border-gray-300 rounded-lg">
+                            <option>All Prices</option>
+                            <option>Under $50,000</option>
+                            <option>$50,000 - $100,000</option>
+                            <option>$100,000 - $150,000</option>
+                            <option>$150,000 - $200,000</option>
+                            <option>Over $200,000</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 mb-2">Year</label>
+                        <select class="w-full p-3 border border-gray-300 rounded-lg">
+                            <option>All Years</option>
+                            <option>2023</option>
+                            <option>2022</option>
+                            <option>2021</option>
+                            <option>2020</option>
+                            <option>2019</option>
+                            <option>2018</option>
+                            <option>2017</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mt-6 flex justify-center">
+                    <button class="btn-primary px-8 py-3 rounded-full font-bold flex items-center gap-2">
+                        <i class="fas fa-search"></i> Search Vehicles
+                    </button>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Car 1 -->
+                <div class="car-card animate-fade-in delay-1">
+                    <div class="relative overflow-hidden h-60">
+                        <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" alt="Porsche 911 Turbo">
+                        <div class="price-badge">$149,999</div>
+                        <div class="absolute top-4 right-4 bg-accent text-white px-3 py-1 rounded-full text-sm font-bold">New</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">Porsche 911 Turbo</h3>
+                        <div class="car-specs">
+                            <div class="car-spec"><i class="fas fa-tachometer-alt"></i> 2,400 mi</div>
+                            <div class="car-spec"><i class="fas fa-gas-pump"></i> Premium</div>
+                            <div class="car-spec"><i class="fas fa-calendar-alt"></i> 2023</div>
+                            <div class="car-spec"><i class="fas fa-car"></i> Coupe</div>
+                        </div>
+                        <div class="car-features">
+                            <span class="car-feature">AWD</span>
+                            <span class="car-feature">Automatic</span>
+                            <span class="car-feature">Turbo</span>
+                            <span class="car-feature">Leather</span>
+                        </div>
+                        <button class="w-full btn-primary px-4 py-3 rounded-lg font-semibold car-details-btn">
+                            View Details <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Car 2 -->
+                <div class="car-card animate-fade-in delay-2">
+                    <div class="relative overflow-hidden h-60">
+                        <img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" alt="Range Rover Sport">
+                        <div class="price-badge">$89,999</div>
+                        <div class="absolute top-4 right-4 bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-bold">Certified</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">Range Rover Sport</h3>
+                        <div class="car-specs">
+                            <div class="car-spec"><i class="fas fa-tachometer-alt"></i> 18,500 mi</div>
+                            <div class="car-spec"><i class="fas fa-gas-pump"></i> Premium</div>
+                            <div class="car-spec"><i class="fas fa-calendar-alt"></i> 2021</div>
+                            <div class="car-spec"><i class="fas fa-car"></i> SUV</div>
+                        </div>
+                        <div class="car-features">
+                            <span class="car-feature">4WD</span>
+                            <span class="car-feature">Automatic</span>
+                            <span class="car-feature">HUD</span>
+                            <span class="car-feature">Panoramic Roof</span>
+                        </div>
+                        <button class="w-full btn-primary px-4 py-3 rounded-lg font-semibold car-details-btn">
+                            View Details <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Car 3 -->
+                <div class="car-card animate-fade-in delay-3">
+                    <div class="relative overflow-hidden h-60">
+                        <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" alt="Audi RS7">
+                        <div class="price-badge">$112,500</div>
+                        <div class="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-bold">Low Miles</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">Audi RS7 Sportback</h3>
+                        <div class="car-specs">
+                            <div class="car-spec"><i class="fas fa-tachometer-alt"></i> 6,200 mi</div>
+                            <div class="car-spec"><i class="fas fa-gas-pump"></i> Premium</div>
+                            <div class="car-spec"><i class="fas fa-calendar-alt"></i> 2022</div>
+                            <div class="car-spec"><i class="fas fa-car"></i> Sedan</div>
+                        </div>
+                        <div class="car-features">
+                            <span class="car-feature">AWD</span>
+                            <span class="car-feature">Automatic</span>
+                            <span class="car-feature">V8</span>
+                            <span class="car-feature">B&O Sound</span>
+                        </div>
+                        <button class="w-full btn-primary px-4 py-3 rounded-lg font-semibold car-details-btn">
+                            View Details <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block border-2 border-accent text-accent font-bold px-8 py-3 rounded-full hover:bg-accent hover:text-white transition">View Full Inventory</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brands Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Premium Brands</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">We partner with the world's most prestigious automotive brands to bring you exceptional vehicles.</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/BMW.svg/1200px-BMW.svg.png" class="brand-logo h-12 mx-auto" alt="BMW">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Mercedes-Logo.svg/2560px-Mercedes-Logo.svg.png" class="brand-logo h-8 mx-auto" alt="Mercedes">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Audi-Logo_2016.svg/2560px-Audi-Logo_2016.svg.png" class="brand-logo h-8 mx-auto" alt="Audi">
+                <img src="https://toppng.com/uploads/preview/porsche-logo-transparent-11661076022cioy4mwdjo.png" class="brand-logo h-10 mx-auto" alt="Porsche">
+                <img src="https://cdn.freebiesupply.com/logos/large/2x/land-rover-2-logo-png-transparent.png" class="brand-logo h-10 mx-auto" alt="Land Rover">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Tesla_T_symbol.svg/1200px-Tesla_T_symbol.svg.png" class="brand-logo h-10 mx-auto" alt="Tesla">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-20 bg-gray-100" id="about">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1489824904134-891ab64532f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1931&q=80" class="rounded-xl shadow-xl w-full" alt="AutoElite Dealership">
+                </div>
+                <div class="lg:w-1/2">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">About AutoElite</h2>
+                    <p class="text-lg text-gray-600 mb-6">Founded in 2008, AutoElite has established itself as the premier destination for luxury and performance vehicles. Our mission is to provide an unparalleled car buying experience for discerning clients.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="feature-icon">
+                                <i class="fas fa-medal"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-xl font-bold mb-2">Award-Winning Service</h3>
+                                <p class="text-gray-600">Recognized as "Best Luxury Dealership" for 5 consecutive years by Automotive Excellence Magazine.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="feature-icon">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-xl font-bold mb-2">Expert Advisors</h3>
+                                <p class="text-gray-600">Our team averages 12 years of industry experience with specialized brand certifications.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="feature-icon">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-xl font-bold mb-2">Rigorous Inspection</h3>
+                                <p class="text-gray-600">Every vehicle undergoes our 150-point certification process before being offered for sale.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-20 bg-white" id="services">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Services</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Comprehensive automotive solutions tailored to your needs.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Vehicle Acquisition</h3>
+                    <p class="text-gray-600">Let us find your perfect vehicle through our extensive network of private sellers and auctions.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-file-signature"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Lease & Finance</h3>
+                    <p class="text-gray-600">Competitive rates and flexible terms through our relationships with top-tier lenders.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Trade-In Evaluation</h3>
+                    <p class="text-gray-600">Get a fair market value assessment for your current vehicle with our transparent process.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Extended Warranties</h3>
+                    <p class="text-gray-600">Comprehensive protection plans with nationwide coverage and premium benefits.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Maintenance Plans</h3>
+                    <p class="text-gray-600">Factory-trained technicians using genuine parts for optimal performance and longevity.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Concierge Delivery</h3>
+                    <p class="text-gray-600">White-glove delivery service anywhere in the continental US for your convenience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Finance Calculator -->
+    <section class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="finance-calculator">
+                <div class="flex flex-col lg:flex-row gap-12">
+                    <div class="lg:w-1/2">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-6">Finance Calculator</h2>
+                        <p class="text-lg mb-8">Estimate your monthly payments with our easy-to-use calculator. Adjust the sliders to see how different terms affect your payment.</p>
+                        
+                        <div class="bg-white bg-opacity-10 p-6 rounded-lg mb-8">
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="font-medium">Estimated Payment:</span>
+                                <span class="text-2xl font-bold">$1,287/mo</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="font-medium">Total Interest:</span>
+                                <span class="text-xl">$8,532</span>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center">
+                            <button class="btn-primary px-8 py-3 rounded-full font-bold">Apply for Financing</button>
+                        </div>
+                    </div>
+                    
+                    <div class="lg:w-1/2">
+                        <div class="mb-6">
+                            <label class="block mb-2 font-medium">Vehicle Price ($)</label>
+                            <input type="range" min="20000" max="300000" value="85000" step="1000" class="range-slider mb-2">
+                            <div class="flex justify-between">
+                                <span>$20,000</span>
+                                <span>$300,000</span>
+                            </div>
+                            <input type="number" value="85000" class="finance-calculator-input mt-2">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label class="block mb-2 font-medium">Down Payment ($)</label>
+                            <input type="range" min="0" max="100000" value="15000" step="1000" class="range-slider mb-2">
+                            <div class="flex justify-between">
+                                <span>$0</span>
+                                <span>$100,000</span>
+                            </div>
+                            <input type="number" value="15000" class="finance-calculator-input mt-2">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label class="block mb-2 font-medium">Loan Term (months)</label>
+                            <input type="range" min="24" max="84" value="60" step="12" class="range-slider mb-2">
+                            <div class="flex justify-between">
+                                <span>24</span>
+                                <span>84</span>
+                            </div>
+                            <input type="number" value="60" class="finance-calculator-input mt-2">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label class="block mb-2 font-medium">Interest Rate (%)</label>
+                            <input type="range" min="1" max="10" value="4.5" step="0.1" class="range-slider mb-2">
+                            <div class="flex justify-between">
+                                <span>1%</span>
+                                <span>10%</span>
+                            </div>
+                            <input type="number" value="4.5" class="finance-calculator-input mt-2">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-gray-50" id="testimonials">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Client Testimonials</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Hear from our satisfied customers about their AutoElite experience.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="relative z-10">AutoElite made the process of buying my dream car effortless. Their attention to detail and customer service is unmatched in the industry. I'll never buy a car anywhere else.</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Johnson">
+                        <div>
+                            <h4 class="font-bold">Michael Johnson</h4>
+                            <p class="text-gray-600 text-sm">Porsche 911 Owner</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="relative z-10">As a first-time luxury car buyer, I was nervous about the process. The team at AutoElite guided me through every step and found me the perfect vehicle within my budget.</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Williams">
+                        <div>
+                            <h4 class="font-bold">Sarah Williams</h4>
+                            <p class="text-gray-600 text-sm">Audi RS7 Owner</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="relative z-10">The concierge delivery service was worth every penny. Having my new Range Rover delivered to my doorstep with a full walkthrough was an incredible experience.</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="David Chen">
+                        <div>
+                            <h4 class="font-bold">David Chen</h4>
+                            <p class="text-gray-600 text-sm">Range Rover Owner</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Video Testimonial -->
+            <div class="video-testimonial mt-16 rounded-xl overflow-hidden">
+                <video class="w-full" poster="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" controls>
+                    <source src="#" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <button class="bg-accent text-white rounded-full w-16 h-16 flex items-center justify-center">
+                        <i class="fas fa-play text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+<!-- Contact Section -->
+<section class="py-20 bg-gray-100" id="contact">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-extrabold mb-4 text-primary">Let’s Connect</h2>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto">Reach out for a personalized consultation or to schedule your test drive.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-10">
+      <div class="bg-white p-8 rounded-xl shadow-md">
+        <h3 class="text-2xl font-bold mb-6 text-secondary">Send Us a Message</h3>
+        <form class="space-y-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <input type="text" placeholder="First Name" class="w-full p-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-accent-light">
+            <input type="text" placeholder="Last Name" class="w-full p-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-accent-light">
+          </div>
+          <input type="email" placeholder="Email Address" class="w-full p-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-accent-light">
+          <input type="tel" placeholder="Phone Number" class="w-full p-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-accent-light">
+          <textarea rows="4" placeholder="Your Message" class="w-full p-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-accent-light"></textarea>
+          <button type="submit" class="w-full py-4 bg-accent text-white font-bold rounded-lg hover:bg-red-700 transition">Send Message</button>
+        </form>
+      </div>
+
+      <div class="flex flex-col justify-center space-y-6">
+        <div class="flex items-center space-x-4">
+          <i class="fas fa-map-marker-alt text-2xl text-accent"></i>
+          <p class="text-lg text-gray-700">123 Luxury Avenue, Beverly Hills, CA</p>
+        </div>
+        <div class="flex items-center space-x-4">
+          <i class="fas fa-phone-alt text-2xl text-accent"></i>
+          <p class="text-lg text-gray-700">(123) 456-7890</p>
+        </div>
+        <div class="flex items-center space-x-4">
+          <i class="fas fa-envelope text-2xl text-accent"></i>
+          <p class="text-lg text-gray-700">info@autoelite.com</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-md">
+          <h3 class="text-xl font-bold mb-2">Book a Test Drive</h3>
+          <p class="mb-4 text-gray-600">Experience the drive before you decide.</p>
+          <button class="w-full py-3 bg-accent text-white font-bold rounded-lg hover:bg-red-700 transition">Schedule Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Newsletter Section -->
+<section class="py-16 bg-secondary text-white">
+  <div class="container mx-auto px-4 text-center">
+    <h2 class="text-4xl font-bold mb-4">Stay in the Loop</h2>
+    <p class="text-lg mb-8 max-w-xl mx-auto">Subscribe to get exclusive updates, offers, and the latest in luxury vehicles.</p>
+    <form class="flex flex-col sm:flex-row justify-center items-center max-w-xl mx-auto">
+      <input type="email" placeholder="Your email address" class="w-full sm:w-2/3 p-4 text-black rounded-l-lg focus:outline-none">
+      <button type="submit" class="bg-accent px-6 py-4 rounded-r-lg font-bold hover:bg-red-700 transition">Subscribe</button>
+    </form>
+    <p class="text-sm text-gray-300 mt-4">No spam. Unsubscribe anytime.</p>
+  </div>
+</section>
+
+    <section class="py-16 bg-secondary text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Join Our Newsletter</h2>
+            <p class="text-lg mb-8 max-w-2xl mx-auto">Subscribe to receive exclusive offers, new arrivals, and luxury automotive insights.</p>
+            
+            <div class="flex justify-center max-w-xl mx-auto">
+                <input type="email" placeholder="Your email address" class="newsletter-input">
+                <button class="newsletter-btn">Subscribe</button>
+            </div>
+            
+            <p class="text-sm text-gray-300 mt-4">We respect your privacy. Unsubscribe at any time.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">
+                        <span class="text-accent">Auto</span>Elite
+                    </h3>
+                    <p class="text-gray-400 mb-4">Your premier destination for luxury and performance vehicles since 2008.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="#inventory" class="text-gray-400 hover:text-white transition">Inventory</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition">About Us</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition">Services</a></li>
+                        <li><a href="#testimonials" class="text-gray-400 hover:text-white transition">Testimonials</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Vehicle Acquisition</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Financing</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Trade-In</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Extended Warranties</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Maintenance</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Concierge Delivery</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Contact Info</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-accent"></i>
+                            <span class="text-gray-400">123 Luxury Avenue, Beverly Hills, CA 90210</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-3 text-accent"></i>
+                            <span class="text-gray-400">(123) 456-7890</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-3 text-accent"></i>
+                            <span class="text-gray-400">info@autoelite.com</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-clock mr-3 text-accent"></i>
+                            <span class="text-gray-400">Mon-Fri: 9am - 7pm</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 AutoElite. All Rights Reserved. | <a href="#" class="hover:text-white transition">Privacy Policy</a> | <a href="#" class="hover:text-white transition">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal for car images -->
+    <div class="modal" id="image-modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <img src="" alt="" class="modal-img" id="modal-image">
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+        
+        // Scroll indicator
+        const scrollIndicator = document.querySelector('.scroll-indicator');
+        window.addEventListener('scroll', () => {
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrolled = (window.scrollY / scrollHeight) * 100;
+            scrollIndicator.style.width = `${scrolled}%`;
+            
+            // Back to top button
+            const backToTop = document.getElementById('back-to-top');
+            if (window.scrollY > 300) {
+                backToTop.classList.add('active');
+            } else {
+                backToTop.classList.remove('active');
+            }
+        });
+        
+        // Back to top functionality
+        document.getElementById('back-to-top').addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    mobileMenu.classList.remove('active');
+                }
+            });
+        });
+        
+        // Image modal functionality
+        const modal = document.getElementById('image-modal');
+        const modalImg = document.getElementById('modal-image');
+        const modalClose = document.querySelector('.modal-close');
+        
+        // Add click event to all car gallery images
+        document.querySelectorAll('.car-gallery img').forEach(img => {
+            img.addEventListener('click', () => {
+                modal.style.display = 'flex';
+                modalImg.src = img.src;
+            });
+        });
+        
+        // Close modal
+        modalClose.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+        
+        // Close modal when clicking outside the image
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+        
+        // Finance calculator functionality
+        const priceInput = document.querySelector('input[type="range"]');
+        const priceDisplay = document.querySelector('input[type="number"]');
+        
+        priceInput.addEventListener('input', () => {
+            priceDisplay.value = priceInput.value;
+        });
+        
+        priceDisplay.addEventListener('input', () => {
+            priceInput.value = priceDisplay.value;
+        });
+    </script>
+</body>
+</html>
